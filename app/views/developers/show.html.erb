@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @developer.name %>
+</p>
+<p>
+<% if @developer.skill_list.present? %>
+  <% @developer.skill_list.each do |skill| %>
+    <%= link_to skill.titleize, 'javascript:void(0)' %>
+  <% end %>
+<% end %>
+</p>
+<%= link_to 'Edit', edit_developer_path(@developer) %> |
+<%= link_to 'Back', developers_path %>

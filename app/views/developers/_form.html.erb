@@ -1,0 +1,29 @@
+<%= form_with(model: developer) do |form| %>
+  <% if developer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(developer.errors.count, "error") %> prohibited this developer from being saved:</h2>
+
+      <ul>
+        <% developer.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div class="field">
+  <%= form.label :skills %>
+  <% if form.object.skill_list.present? %>
+    <%= form.text_field :skill_list, value: form.object.skill_list.join(",") %>
+  <% else %>
+    <%= form.text_field :skill_list %>
+  <% end %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
